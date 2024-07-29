@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxikioso</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Maxikioso</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'lista_productos' %}">Productos</a></li>
+                    <li><a href="{% url 'agregar_producto' %}">Agregar Producto</a></li>
+                    <li><a href="{% url 'agregar_categoria' %}">Agregar Categoría</a></li>
+                </ul>
+            </nav>
+            <form action="{% url 'buscar_producto' %}" method="get" class="search-form">
+                <input type="text" name="nombre" placeholder="Buscar productos..." required>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Maxikioso</p>
+        </div>
+    </footer>
+</body>
+</html>

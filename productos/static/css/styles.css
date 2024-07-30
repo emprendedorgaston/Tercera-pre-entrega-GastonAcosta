@@ -17,6 +17,7 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 header .container {
@@ -65,6 +66,11 @@ header .search-form input[type="text"] {
     border: none;
     border-radius: 4px;
     margin-right: 10px;
+    transition: box-shadow 0.3s;
+}
+
+header .search-form input[type="text"]:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 header .search-form button {
@@ -74,15 +80,16 @@ header .search-form button {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 header .search-form button:hover {
     background-color: #e18b51;
+    transform: scale(1.05);
 }
 
 main {
-    padding: 100px 20px 20px;
+    padding: 140px 20px 20px;
 }
 
 main .container {
@@ -93,6 +100,92 @@ main .container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     animation: fadeIn 0.5s ease-in-out;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px);
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-form .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.auth-form label {
+    margin-right: 10px;
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+}
+
+.auth-form .form-control {
+    flex: 2;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-form .form-control:focus {
+    border-color: #f4a261;
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.5);
+}
+
+.auth-form .btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.auth-form .btn:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.auth-form .register-link {
+    margin-top: 15px;
+}
+
+.auth-form .register-link a {
+    color: #f4a261;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.auth-form .register-link a:hover {
+    color: #e18b51;
 }
 
 table {
@@ -118,11 +211,12 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
     background-color: #555;
+    transform: scale(1.05);
 }
 
 footer {
@@ -133,6 +227,7 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
 
 footer .container {
@@ -146,6 +241,17 @@ footer .container {
         opacity: 0;
     }
     to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
         opacity: 1;
     }
 }

@@ -1,15 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto, Categoria, Inventario
 from .forms import ProductoForm, CategoriaForm, InventarioForm, BuscarProductoForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def lista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'productos/lista_productos.html', {'productos': productos})
-
+@login_required
 def detalle_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
     return render(request, 'productos/detalle_producto.html', {'producto': producto})
-
+@login_required
 def agregar_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
@@ -19,7 +21,7 @@ def agregar_producto(request):
     else:
         form = ProductoForm()
     return render(request, 'productos/agregar_producto.html', {'form': form})
-
+@login_required
 def editar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
     if request.method == 'POST':
@@ -30,7 +32,7 @@ def editar_producto(request, producto_id):
     else:
         form = ProductoForm(instance=producto)
     return render(request, 'productos/editar_producto.html', {'form': form})
-
+@login_required
 def agregar_categoria(request):
     if request.method == 'POST':
         form = CategoriaForm(request.POST)
@@ -40,7 +42,7 @@ def agregar_categoria(request):
     else:
         form = CategoriaForm()
     return render(request, 'productos/agregar_categoria.html', {'form': form})
-
+@login_required
 def buscar_producto(request):
     form = BuscarProductoForm(request.GET)
     productos = Producto.objects.all()

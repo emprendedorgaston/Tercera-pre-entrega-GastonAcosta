@@ -1,7 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('productos.urls')),  # Asegúrate de incluir las URLs de la aplicación 'productos'
+    path('', include('productos.urls')),
+    path('user/', include('user.urls')),
+
 ]
